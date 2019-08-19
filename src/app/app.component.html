@@ -1,0 +1,67 @@
+
+<div style="text-align:center">
+  <h3 class="titleApp"> {{titleApp}} </h3>
+</div>
+<br>
+
+<div class="d-flex justify-content-center" *ngIf="imgLoader" > 
+  <strong>Loading...</strong>
+  <div class="spinner-border" role="status"></div>
+</div> 
+
+<div style="text-align:left" class="container">
+    <h5 class="title">
+      {{title}}
+    </h5>
+
+    <table  style= "table-layout:auto" class="table">
+      <tbody>
+        <tr>
+          <td *ngFor="let user of users, let i = index" > 
+            <button class="btn btn-primary .btn-primary:hover
+            .btn-primary:visited userBtn" (click)="onSelect(user)">{{ user.name.split(" ",2)[0]}}</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+</div>
+
+<br>
+
+   <!--Show posts on click of a user-->
+<div class="container" *ngIf="postsFlag">
+
+    <!-- Show it when there is no posts from a user-->
+    <div class="no-data text-center" *ngIf="postsForUser.length == 0">
+      Posts from {{selectedUser}}:
+      There is no posts added yet!
+    </div>
+
+     <!-- Show it when there are posts for a user -->
+    <div *ngIf="postsForUser.length !== 0">
+        Posts from {{selectedUser}}:
+        <div class="accordion" *ngFor="let post of postsForUser; let i=index"  
+        (click)="onSelectPost(post.postId)">
+            <section class="accordion-item" *ngIf=" i <= maxPostRows">
+                Title: {{post.title}}
+                <br>
+                Body:  {{post.body}}
+                <div class="accordion-item-content"  *ngFor="let comment of comments; let i=index" >
+                  <p>
+                    Name: {{comment.name}}
+                    <br>
+                    Body: {{comment.body}}
+                    <br>
+                  </p>
+                </div>
+            </section>
+       </div>
+          
+       <div class="text-right">
+        <button id= "loadAll" class="btn btn-primary" (click)="onLoadAllClick(postsForUser)">Load all</button>
+       </div>
+      
+    </div>
+
+</div>   
+

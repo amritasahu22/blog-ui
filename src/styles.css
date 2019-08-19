@@ -1,0 +1,46 @@
+/* You can add global styles to this file, and also import other style files */
+
+ /* The Magic */
+.accordion:hover .accordion-item:hover .accordion-item-content,
+.accordion .accordion-item .accordion-item-content
+.accordion .accordion-item--default .accordion-item-content {
+    height: 6em;
+}
+
+.accordion-item-content,
+.accordion-item-content {
+    height: 0;
+    overflow: hidden;
+    transition: height .25s;
+    background-color:grey;
+}
+
+/* Aesthetic */
+
+.accordion {
+    padding: 0;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.accordion .accordion-item {
+  background-color:blue;
+  border-bottom: 1px solid #666;
+  padding: 1em;
+  color: white;
+}
+
+.accordion h1 {
+  margin: 0;
+}
+
+.btn-primary,
+.btn-primary:hover,
+.btn-primary:active
+.btn-primary:visited,
+.btn-primary:focus {
+    background-color: blue;
+}
+
+
+
